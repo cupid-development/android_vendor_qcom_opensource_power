@@ -19,6 +19,10 @@ endif
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp
 
+ifneq ($(BOARD_POWER_CUSTOM_BOARD_LIB),)
+    LOCAL_WHOLE_STATIC_LIBRARIES += $(BOARD_POWER_CUSTOM_BOARD_LIB)
+else
+
 # Include target-specific files.
 ifeq ($(call is-board-platform-in-list, msm8974), true)
 LOCAL_SRC_FILES += power-8974.c
@@ -85,6 +89,8 @@ endif
 ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
+
+endif  #  End of board specific list
 
 ifneq ($(TARGET_POWERHAL_SET_INTERACTIVE_EXT),)
     LOCAL_CFLAGS += -DSET_INTERACTIVE_EXT
