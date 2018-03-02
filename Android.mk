@@ -16,7 +16,6 @@ else
     LOCAL_SHARED_LIBRARIES += android.hardware.power-V1-ndk
 endif
 
-LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
 LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp
 
